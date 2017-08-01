@@ -1,0 +1,221 @@
+html{color:#000;background:#FFF}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal}ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}q:before,q:after{content:''}abbr,acronym{border:0;font-variant:normal}sup{vertical-align:text-top}sub{vertical-align:text-bottom}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;*font-size:100%}legend{color:#000}
+html,body{height:100%}
+a, input, select, textarea {
+    outline: 0;
+}
+a{
+    text-decoration: none;
+    color: #000;
+}
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-touch-callout: none;
+}
+textarea:focus, keygen:focus, select:focus {
+    outline-offset: -2px;
+}
+$warp-width:100%;
+$warp-text:0.28rem;
+$bgCl:#355bbd;
+$textClOne:#fff;
+$textClTwo:#000;
+$textClThree:#4d4d4d;
+@mixin flex{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+@mixin flex-center{
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;  //垂直居中
+}
+@mixin flexOne{
+    -webkit-box-flex:1;-ms-flex:1;flex:1;
+}
+@mixin flex-content{
+/*老版本语法*/ -webkit-box-pack: center; -moz-box-pack: center; 
+/*混合版本语法*/ -ms-flex-pack: center; 
+/*新版本语法*/ -webkit-justify-content: center; justify-content: center;//水平居中
+}
+.BlockListItem,.inputIcon,.inputIcon,.nav{
+    @include flex;
+    @include flex-center;
+}
+.enrich{
+    @include flexOne;
+}
+.nav{
+    @include flex-content;
+}
+
+#root{
+    width: $warp-width;
+    height: $warp-width;
+    overflow: hidden;
+}
+#app{
+    height: $warp-width;
+    overflow-y: auto;
+    position: relative;
+    font-size:$warp-text;
+    width: $warp-width;
+    -webkit-overflow-scrolling: touch;
+    .top{
+    height: 1rem;
+    line-height: 1rem;
+    position: absolute;
+    top: 0.4rem;
+    left: 0;
+    right: 0;
+    background: $bgCl;
+    box-sizing: border-box;
+    border-bottom: 0.01rem solid #ddd;
+        .in{
+            color: $textClOne;
+            .back{
+                width: 1.5rem;
+                padding-left: 0.2rem;
+                color: $textClOne;
+                position: relative;
+                z-index: 9;
+            }
+            .right{
+                width: 1rem;
+            }
+        }
+        .topInfo{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            padding: 0 1rem;
+            font-size: 0.38rem;
+            color: $textClOne;
+        }
+    }
+    .warp{
+        height: 100%;
+        padding-top: 1.4rem;
+        box-sizing: border-box;
+        background: #ddd;
+        .titleFx{
+            color: $textClThree;
+            height: 0.4rem;
+            line-height: 0.4rem;
+            font-size: 0.2rem;
+            p{
+                margin: 0.2rem 0;
+                font-size: 0.2rem;
+            }
+        }
+        .BlockList{
+            width: $warp-width;
+            padding-bottom: 1.2rem;
+            .BlockListItem{
+                padding: 0.2rem 0.3rem;
+                color: $textClTwo;
+                background: $textClOne;
+                p{
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    max-width: $warp-width * 0.8;
+                    line-height: 0.5rem;
+                    min-height: 0.5rem;
+                }
+                span{
+                    font-size: 0.2rem;
+                    color: $textClThree;
+                    text-align: right;
+                    flex-shrink: 0;//默认缩小取消
+                }
+            }
+        }
+        .nav{
+            position: fixed;
+            width: 1rem;
+            height: 1rem;
+            bottom: 0.3rem;
+            right: 0.3rem;
+            z-index: 9;
+            background: $bgCl;
+            border-radius: $warp-width / 2;
+            font-size: 0;
+            svg{
+                transition: transform,0.4s;
+                fill: $textClOne;
+            }
+            svg.active{
+                transform: rotate(45deg);
+                transition: transform,0.4s;
+            }
+        }
+    }
+}
+.popup{
+    width: $warp-width;
+    height: $warp-width;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background: rgba(0, 0, 0, 0);
+    transition: background,0.6s;
+    .InputTex{
+        font-size: $warp-text;
+        width: $warp-width * 0.8;
+        position: absolute;
+        top: $warp-width / 2;
+        left: $warp-width / 2;
+        transform: translate(- $warp-width / 2,- $warp-width / 2);
+        background: $textClOne;
+        padding: 0.3rem;
+        box-sizing: border-box;
+        border-radius: 0.08rem;
+        textarea{
+            width: $warp-width;
+            padding: 0.1rem 0.1rem;
+            box-sizing: border-box;
+            height: auto;
+            min-height: 0.8rem;
+            line-height: 0.4rem;
+            border: 0;
+            background: $textClOne;
+            border: 0.01rem solid #ddd;
+            border-radius: 0.05rem;
+        }
+        .inputIcon{
+            margin: 0.2rem 0;
+        }
+        .buttonOk{
+            width: $warp-width;
+            height: 0.8rem;
+            background: $bgCl;
+            color: $textClOne;
+            font-size: $warp-text;
+            border: 0;
+            border-radius: 0.4rem;
+            line-height: 0.8rem;
+            text-align: center;
+        }
+    }
+}
+.popup.active{
+    z-index: 999;
+    background: rgba(0, 0, 0, 0.5);
+    transition: background,0.6s;
+}
+.detailTitle{
+    height: 1rem;
+    line-height: 1rem;
+    font-size: 0.36rem;
+    text-align: center;
+}
+.detailConten{
+    padding: 0.1rem 0.3rem;
+    line-height: 0.5rem;
+}
