@@ -118,16 +118,76 @@ textarea:focus, keygen:focus, select:focus {
   overflow: hidden;
 }
 
-#app {
+.page-push .page-switch-enter .app {
+  z-index: 2;
+  -webkit-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+  transition: -webkit-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+}
+
+.page-push .page-switch-enter-active .app {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.page-push .page-switch-exit .app {
+  z-index: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+  transition: -webkit-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+}
+
+.page-push .page-switch-exit-active .app {
+  -webkit-transform: translate3d(-20%, 0, 0);
+  transform: translate3d(-20%, 0, 0);
+}
+
+.page-pop .page-switch-enter .app {
+  z-index: 1;
+  -webkit-transform: translate3d(-20%, 0, 0);
+  transform: translate3d(-20%, 0, 0);
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+  transition: -webkit-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+}
+
+.page-pop .page-switch-enter-active .app {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.page-pop .page-switch-exit .app {
+  z-index: 2;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+  transition: -webkit-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+}
+
+.page-pop .page-switch-exit-active .app {
+  -webkit-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
+}
+
+.app {
   height: 100%;
   overflow-y: auto;
-  position: relative;
+  position: absolute;
   font-size: 0.28rem;
   width: 100%;
   -webkit-overflow-scrolling: touch;
 }
 
-#app .top {
+.app .top {
   height: 1rem;
   line-height: 1rem;
   position: absolute;
@@ -139,11 +199,11 @@ textarea:focus, keygen:focus, select:focus {
   border-bottom: 0.01rem solid #ddd;
 }
 
-#app .top .in {
+.app .top .in {
   color: #fff;
 }
 
-#app .top .in .back {
+.app .top .in .back {
   width: 1.5rem;
   padding-left: 0.2rem;
   color: #fff;
@@ -151,11 +211,11 @@ textarea:focus, keygen:focus, select:focus {
   z-index: 9;
 }
 
-#app .top .in .right {
+.app .top .in .right {
   width: 1rem;
 }
 
-#app .top .topInfo {
+.app .top .topInfo {
   position: absolute;
   top: 0;
   left: 0;
@@ -166,37 +226,39 @@ textarea:focus, keygen:focus, select:focus {
   color: #fff;
 }
 
-#app .warp {
+.app .warp {
   height: 100%;
   padding-top: 1.4rem;
   box-sizing: border-box;
   background: #ddd;
+  box-shadow: -0.05rem 0 0.05rem #d4d4d4 inset, 0.05rem 0 0.05rem #d4d4d4 inset, 0 0 0.05rem #fff, 0 0.05rem 0.05rem #fff;
+  /*底边阴影*/
 }
 
-#app .warp .titleFx {
+.app .warp .titleFx {
   color: #4d4d4d;
   height: 0.4rem;
   line-height: 0.4rem;
   font-size: 0.2rem;
 }
 
-#app .warp .titleFx p {
+.app .warp .titleFx p {
   margin: 0.2rem 0;
   font-size: 0.2rem;
 }
 
-#app .warp .BlockList {
+.app .warp .BlockList {
   width: 100%;
   padding-bottom: 1.2rem;
 }
 
-#app .warp .BlockList .BlockListItem {
+.app .warp .BlockList .BlockListItem {
   padding: 0.2rem 0.3rem;
   color: #000;
   background: #fff;
 }
 
-#app .warp .BlockList .BlockListItem p {
+.app .warp .BlockList .BlockListItem p {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -205,14 +267,14 @@ textarea:focus, keygen:focus, select:focus {
   min-height: 0.5rem;
 }
 
-#app .warp .BlockList .BlockListItem span {
+.app .warp .BlockList .BlockListItem span {
   font-size: 0.2rem;
   color: #4d4d4d;
   text-align: right;
   flex-shrink: 0;
 }
 
-#app .warp .nav {
+.app .warp .nav {
   position: fixed;
   width: 1rem;
   height: 1rem;
@@ -224,12 +286,12 @@ textarea:focus, keygen:focus, select:focus {
   font-size: 0;
 }
 
-#app .warp .nav svg {
+.app .warp .nav svg {
   transition: transform,0.4s;
   fill: #fff;
 }
 
-#app .warp .nav svg.active {
+.app .warp .nav svg.active {
   transform: rotate(45deg);
   transition: transform,0.4s;
 }

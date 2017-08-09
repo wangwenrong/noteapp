@@ -1,30 +1,30 @@
 import React from 'react';
 import '../css/flexStyle.css';
 
-function Flex({ newClass = '', children }) {
-    if ({ newClass } = 'alignItems') {
-        newClass = '' + 'alignItems' //垂直居中
+function Flex({ alignItems = false, justifyContent = false, contenCneter = false, flexOne = false, children }) {
+    let names = ' ';
+    if (alignItems) {
+        names = names + ' alignItems'//垂直居中
     }
-    if ({ newClass } = 'justifyContent') {
-        newClass = '' + 'justifyContent' //水平居中
+    if (justifyContent) {
+        names = names + ' justifyContent'//水平居中
     }
-    if ({ newClass } = 'contenCneter') {
-        newClass = '' + 'contenCneter'  //垂直水平居中
+    if (contenCneter) {
+        names = names + ' contenCneter'//垂直水平居中
     }
-    if ({ newClass } = 'flexOne') {
-        newClass = '' + 'flexOne' //平均分配为1
+    if (flexOne) {
+        names = names + ' flexOne'//平均分配为1
     }
     return (
-        <div className={'flex ' + newClass}>{children}</div>
+        <div className={'flex' + names}>{children}</div>
     )
 }
 export function FlexDiv() {
     return (
-        <Flex newClass='contenCneter'>
-            <p>你好啊</p>
-            <p>我不太好呢</p>
-            <p>是吗？</p>
-            <p>是啊。。。</p>
+        <Flex flexOne contenCneter>
+            <div style={{background:'red'}}>111</div>
+            <div style={{background:'green'}}>222</div>
+            <div style={{background:'red'}}>3333</div>
         </Flex>
     )
 }

@@ -9,7 +9,7 @@ import {
 
 export function App({ children }) {
     return (
-        <div id='app'>
+        <div className='app'>
             {children}
         </div>
     )
@@ -88,7 +88,7 @@ export class Swipe extends React.Component {
         //     styles.container.merge({ transition: '0.3s ease-out' });
         // }
         return (
-            <div style={{ position: 'relative', display: this.state.show ? 'none' : '' }}>
+            <div style={{ position: 'relative',height:'0.8rem',background:'#fff', display: this.state.show ? 'none' : '' }}>
                 <div style={{ display: 'flex', height: '.8rem', background: '#fff', color: '#fff' }}>
                     <div style={{ flex: '1' }}></div>
                     <div style={{ display: 'flex', height: '100%', alignItems: 'center', background: '#ddd', padding: '0 10px' }}>设为标记</div>
@@ -118,7 +118,7 @@ export class Swipe extends React.Component {
 
                     }}
                     onClick={this.props.to}
-                    style={{  display: 'flex',position: 'absolute', left: 0, right: 0, top: 0, lineHeight: '0.8rem', padding: '0 0.3rem', background: '#fff', transform: 'translate3d(' + offsetX + 'px,0,0)', transition: this.state.transition ? 'transform 300ms' : null }}>
+                    style={{  display: 'flex',position: 'absolute', left: 0, right: 0, top: 0, height:'0.8rem', lineHeight: '0.8rem', padding: '0 0.3rem', background: '#fff', transform: 'translate3d(' + offsetX + 'px,0,0)', transition: this.state.transition ? 'transform 300ms' : null }}>
                         <p>{this.props.title}</p>
                         <div className='enrich'></div>
                         <span>{this.props.day}</span>

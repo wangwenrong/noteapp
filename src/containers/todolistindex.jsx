@@ -44,7 +44,7 @@ export class Todolist extends React.Component {
                             )
                         })}
                         
-                        <ul>
+                       
                             {/* {this.state.list.map((item, index) => {
                                 let time = new Date(item.finishTime);
                                 return (
@@ -54,7 +54,7 @@ export class Todolist extends React.Component {
                                 )
                             })} */}
 
-                        </ul>
+                        
                     </BlockList>
                     <div onClick={this.showPopup} className='nav'>
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"

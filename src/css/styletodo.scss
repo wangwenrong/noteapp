@@ -20,6 +20,7 @@ $bgCl:#355bbd;
 $textClOne:#fff;
 $textClTwo:#000;
 $textClThree:#4d4d4d;
+$pageTime:.3s;
 @mixin flex{
     display: -webkit-box;
     display: -ms-flexbox;
@@ -54,10 +55,69 @@ $textClThree:#4d4d4d;
     height: $warp-width;
     overflow: hidden;
 }
-#app{
+// push进入
+.page-push .page-switch-enter .app{
+  z-index: 2;
+  -webkit-transform: translate3d(100%, 0, 0);
+          transform: translate3d(100%, 0, 0);
+  -webkit-transition:  -webkit-transform $pageTime ease-out;
+  transition:  -webkit-transform $pageTime ease-out;
+  transition: transform $pageTime ease-out;
+  transition:transform $pageTime ease-out, -webkit-transform $pageTime ease-out;
+} 
+.page-push .page-switch-enter-active .app{
+-webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+//push 离开
+.page-push .page-switch-exit .app{
+  z-index: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  -webkit-transition: -webkit-transform $pageTime ease-out;
+  transition:  -webkit-transform $pageTime ease-out;
+  transition:  transform $pageTime ease-out;
+  transition: transform $pageTime ease-out, -webkit-transform $pageTime ease-out;
+} 
+.page-push .page-switch-exit-active .app{
+ -webkit-transform: translate3d(-20%, 0, 0);
+          transform: translate3d(-20%, 0, 0);
+}
+
+// pop进入
+.page-pop .page-switch-enter .app{
+ z-index: 1;
+  -webkit-transform: translate3d(-20%, 0, 0);
+          transform: translate3d(-20%, 0, 0);
+  -webkit-transition:  -webkit-transform $pageTime ease-out;
+  transition:  -webkit-transform $pageTime ease-out;
+  transition: transform $pageTime ease-out;
+  transition:transform $pageTime ease-out, -webkit-transform $pageTime ease-out;
+} 
+.page-pop .page-switch-enter-active .app{
+-webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+//pop 离开
+.page-pop .page-switch-exit .app{
+  z-index: 2;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  -webkit-transition: -webkit-transform $pageTime ease-out;
+  transition:  -webkit-transform $pageTime ease-out;
+  transition:  transform $pageTime ease-out;
+  transition: transform $pageTime ease-out, -webkit-transform $pageTime ease-out;
+} 
+.page-pop .page-switch-exit-active .app{
+-webkit-transform: translate3d(100%, 0, 0);
+          transform: translate3d(100%, 0, 0);
+}
+
+
+.app{
     height: $warp-width;
     overflow-y: auto;
-    position: relative;
+    position: absolute;
     font-size:$warp-text;
     width: $warp-width;
     -webkit-overflow-scrolling: touch;
@@ -100,6 +160,10 @@ $textClThree:#4d4d4d;
         padding-top: 1.4rem;
         box-sizing: border-box;
         background: #ddd;
+        box-shadow:-0.05rem 0 0.05rem #d4d4d4 inset, /*左边阴影*/  
+            0.05rem 0 0.05rem #d4d4d4 inset, /*右边阴影*/  
+            0 0 0.05rem #fff, /*顶部阴影*/  
+            0 0.05rem 0.05rem #fff; /*底边阴影*/  
         .titleFx{
             color: $textClThree;
             height: 0.4rem;
